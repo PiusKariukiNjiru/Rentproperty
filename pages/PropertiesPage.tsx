@@ -899,19 +899,6 @@ const PropertiesPage: React.FC = () => {
                       </div>
                     )}
                 </div>
-                {landlord && (
-                    <div className="bg-neutral-light p-4 rounded-lg shadow-sm">
-                        <h4 className="text-lg font-semibold text-primary mb-3 border-b border-neutral pb-2">Landlord Information</h4>
-                        <div className="flex items-center mb-2 space-x-3">
-                        <img src={landlord.profilePicture || 'https://via.placeholder.com/150/F0F0F0/808080?text=No+Image'} alt={landlord.name} className="w-16 h-16 rounded-full shadow-sm object-cover"/>
-                        <div>
-                            <p className="font-semibold text-neutral-dark text-md">{landlord.name}</p>
-                            <p className="text-sm text-gray-500 break-all">{landlord.email}</p>
-                            <p className="text-sm text-gray-500">{landlord.phone}</p>
-                        </div>
-                        </div>
-                    </div>
-                )}
              </div>
             
             <div className="pt-2">
