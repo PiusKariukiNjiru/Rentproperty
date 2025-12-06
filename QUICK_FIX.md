@@ -81,3 +81,5 @@ Open in browser: https://rentproperty-backend.onrender.com/api/properties
 If you see JSON data or an error message, the backend is working.
 If you see "Cannot GET /api/properties", the route might need adjustment.
 
+
+

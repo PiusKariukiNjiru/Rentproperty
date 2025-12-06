@@ -105,3 +105,5 @@ After redeploying, check the browser console. You should see:
 
 If you see `'VITE_API_BASE_URL from env': undefined`, the variable is NOT set correctly in Vercel.
 
+
+

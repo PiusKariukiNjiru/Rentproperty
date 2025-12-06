@@ -45,3 +45,5 @@ const SavedSearchSchema = new mongoose.Schema({
 
 module.exports = mongoose.model('SavedSearch', SavedSearchSchema);
 
+
+
