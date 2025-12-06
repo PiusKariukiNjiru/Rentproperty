@@ -75,7 +75,10 @@ export const SocketProvider: React.FC<SocketProviderProps> = ({ children }) => {
     });
 
     newSocket.on('connect_error', (error) => {
-      console.error('Socket connection error:', error.message);
+      // Only log if it's not an authentication error (expected when not logged in)
+      if (!error.message.includes('Authentication error')) {
+        console.error('Socket connection error:', error.message);
+      }
     });
 
     newSocket.on('onlineUsers', (users: string[]) => {

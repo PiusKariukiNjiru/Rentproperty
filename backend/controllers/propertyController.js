@@ -152,7 +152,7 @@ exports.getProperties = async (req, res) => {
       
       // Optimize query with select() and lean() for better performance
       properties = await Property.find(queryFilter)
-        .select('title price address city photos propertyType bedrooms bathrooms amenities squareFootage petPolicy leaseTerms latitude longitude availabilityDate description tenantRequirements landlordId createdAt updatedAt')
+        .select('title price address city zipCode photos propertyType bedrooms bathrooms amenities squareFootage petPolicy leaseTerms latitude longitude availabilityDate description tenantRequirements landlordId createdAt updatedAt')
         .populate('landlordId', 'name email phone profilePicture')
         .lean()
         .limit(100); // Limit results for performance
@@ -167,21 +167,21 @@ exports.getProperties = async (req, res) => {
     } else {
       // Optimize query with select() and lean() for better performance
       properties = await Property.find(queryFilter)
-        .select('title price address city photos propertyType bedrooms bathrooms amenities squareFootage petPolicy leaseTerms latitude longitude availabilityDate description tenantRequirements landlordId createdAt updatedAt')
+        .select('title price address city zipCode photos propertyType bedrooms bathrooms amenities squareFootage petPolicy leaseTerms latitude longitude availabilityDate description tenantRequirements landlordId createdAt updatedAt')
         .populate('landlordId', 'name email phone profilePicture')
         .lean()
         .limit(100); // Limit results for performance
     }
     
     // Transform _id to id for frontend consistency
+    // Note: lean() returns plain objects, so no need for toObject()
     const transformedProperties = properties.map(prop => {
-      const propObj = prop.toObject();
       return {
-        ...propObj,
-        id: propObj._id.toString(),
-        landlordId: typeof propObj.landlordId === 'object' && propObj.landlordId 
-          ? { ...propObj.landlordId, id: propObj.landlordId._id.toString() }
-          : propObj.landlordId.toString()
+        ...prop,
+        id: prop._id.toString(),
+        landlordId: typeof prop.landlordId === 'object' && prop.landlordId 
+          ? { ...prop.landlordId, id: prop.landlordId._id.toString() }
+          : prop.landlordId.toString()
       };
     });
     
