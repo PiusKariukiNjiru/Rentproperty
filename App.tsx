@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { HashRouter, Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { AppProvider, AppContext } from './contexts/AppContext';
 import { ToastProvider } from './contexts/ToastContext';
+import { SocketProvider } from './contexts/SocketContext';
 import { AppContextType } from './types';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
@@ -9,7 +10,7 @@ import PropertiesPage from './pages/PropertiesPage';
 import DashboardPage from './pages/DashboardPage';
 import AuthPage from './pages/AuthPage';
 import CreateListingPage from './pages/CreateListingPage';
-import ToastNotifications from './components/ToastNotifications'; // Import ToastNotifications
+import ToastNotifications from './components/ToastNotifications';
 
 const ProtectedRoute: React.FC = () => {
   const { currentUser } = useContext(AppContext) as AppContextType;
@@ -39,21 +40,23 @@ const App: React.FC = () => {
   return (
     <ToastProvider>
       <AppProvider>
-        <HashRouter>
-          <Routes>
-            <Route path="/auth" element={<AuthPage />} />
-            <Route element={<AppLayout />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/properties" element={<PropertiesPage />} />
-              <Route element={<ProtectedRoute />}>
-                <Route path="/dashboard" element={<DashboardPage />} />
-                <Route path="/listing/create" element={<CreateListingPage />} />
-                <Route path="/listing/edit/:propertyId" element={<CreateListingPage />} />
+        <SocketProvider>
+          <HashRouter>
+            <Routes>
+              <Route path="/auth" element={<AuthPage />} />
+              <Route element={<AppLayout />}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/properties" element={<PropertiesPage />} />
+                <Route element={<ProtectedRoute />}>
+                  <Route path="/dashboard" element={<DashboardPage />} />
+                  <Route path="/listing/create" element={<CreateListingPage />} />
+                  <Route path="/listing/edit/:propertyId" element={<CreateListingPage />} />
+                </Route>
+                <Route path="*" element={<Navigate to="/" replace />} />
               </Route>
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Route>
-          </Routes>
-        </HashRouter>
+            </Routes>
+          </HashRouter>
+        </SocketProvider>
       </AppProvider>
     </ToastProvider>
   );

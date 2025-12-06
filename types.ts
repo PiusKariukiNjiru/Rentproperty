@@ -55,17 +55,40 @@ export interface Property {
   updatedAt?: string; // From Mongoose timestamps
 }
 
+export interface MessageAttachment {
+  id?: string;
+  filename: string;
+  originalName: string;
+  mimeType: string;
+  size: number;
+  url: string;
+}
+
 export interface Message {
   id: string; // Will be _id from MongoDB
   senderId: string | User;
   receiverId: string | User;
   propertyId?: string | Property;
+  conversationId?: string;
   subject?: string;
   content: string;
+  attachments?: MessageAttachment[];
   timestamp: string; // Will be createdAt from Mongoose
   isRead: boolean;
+  readAt?: string;
+  isDelivered?: boolean;
+  deliveredAt?: string;
   createdAt?: string;
   updatedAt?: string;
+}
+
+export interface Conversation {
+  conversationId: string;
+  lastMessage: Message | null;
+  unreadCount: number;
+  messageCount: number;
+  otherUser?: User;
+  property?: Property;
 }
 
 export enum ApplicationStatus {

@@ -12,6 +12,7 @@ import ImageUpload from '../components/ImageUpload'; // Import ImageUpload
 import ReviewList from '../components/ReviewList';
 import ReviewForm from '../components/ReviewForm';
 import ReviewCard from '../components/ReviewCard';
+import EnhancedMessaging from '../components/EnhancedMessaging';
 import { UserCircleIcon, ChatBubbleLeftRightIcon, BuildingOfficeIcon, PencilIcon, TrashIcon, PlusCircleIcon, HeartIcon, EyeIcon, ArrowLeftIcon, CheckCircleIcon, ExclamationCircleIcon, DocumentTextIcon, MapPinIcon } from '../components/icons';
 import { useToast } from '../contexts/ToastContext';
 
@@ -631,55 +632,9 @@ const DashboardPage: React.FC = () => {
         );
       case 'messages':
         return (
-            <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg animate-fadeIn">
-            <h3 className="text-2xl font-semibold text-primary mb-6">My Messages</h3>
-            {userMessages.length === 0 ? (
-                <div className="text-center py-12">
-                    <ChatBubbleLeftRightIcon className="w-20 h-20 text-neutral-DEFAULT mx-auto mb-4" />
-                    <p className="text-xl text-neutral-dark font-medium">No messages yet.</p>
-                    <p className="text-gray-500 mt-1">Your conversations will appear here.</p>
-                </div>
-            ) : (
-                <ul className="space-y-4">
-                {userMessages.map(msg => {
-                    const senderIdValue = msg.senderId;
-                    const receiverIdValue = msg.receiverId;
-                    const otherUserValue = (typeof senderIdValue === 'string' ? senderIdValue : senderIdValue.id) === currentUser.id ? receiverIdValue : senderIdValue;
-                    const otherUserId = typeof otherUserValue === 'string' ? otherUserValue : otherUserValue.id;
-                    const otherUser = getUserById(otherUserId);
-
-                    const propertyIdValue = msg.propertyId;
-                    const propertyIdString = typeof propertyIdValue === 'string' ? propertyIdValue : propertyIdValue?.id;
-                    const relatedProperty = propertyIdString ? getPropertyById(propertyIdString) : null;
-                    
-                    const msgReceiverId = typeof msg.receiverId === 'string' ? msg.receiverId : msg.receiverId.id;
-                    const isUnread = !msg.isRead && msgReceiverId === currentUser.id;
-
-                    return (
-                    <li key={msg.id} onClick={() => openMessageDetail(msg)}
-                        className={`p-4 border rounded-lg hover:shadow-lg cursor-pointer transition-all duration-200 ease-in-out ${isUnread ? 'bg-blue-50 border-primary shadow-md transform hover:scale-[1.01]' : 'bg-white border-neutral hover:border-gray-300 hover:bg-neutral-light/30'}`}>
-                        <div className="flex justify-between items-start">
-                            <div className="flex-grow min-w-0"> {/* For text truncation */}
-                                <p className={`font-semibold text-lg ${isUnread ? 'text-primary' : 'text-neutral-dark'} truncate`}>
-                                    {msg.subject || `Message regarding ${relatedProperty?.title || 'general inquiry'}`}
-                                </p>
-                                <p className="text-sm text-gray-600 truncate max-w-md md:max-w-lg">{msg.content}</p>
-                                <p className="text-xs text-gray-500 mt-1.5">
-                                    {(typeof msg.senderId === 'string' ? msg.senderId : msg.senderId.id) === currentUser.id ? `To: ${otherUser?.name || 'User'}` : `From: ${otherUser?.name || 'User'}`}
-                                    {relatedProperty && ` | For: ${relatedProperty.title.substring(0,25)}...`}
-                                </p>
-                            </div>
-                            <div className="text-right flex-shrink-0 ml-3 space-y-1">
-                                <p className="text-xs text-gray-500">{new Date(msg.timestamp).toLocaleDateString()} {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit'})}</p>
-                                {isUnread && <Badge text="New" color="primary" size="sm"/>}
-                            </div>
-                        </div>
-                    </li>
-                    );
-                })}
-                </ul>
-            )}
-            </div>
+          <div className="animate-fadeIn">
+            <EnhancedMessaging currentUser={currentUser} />
+          </div>
         );
       case 'listings':
         if (currentUser.userType !== UserType.Landlord) return <p className="text-center text-lg text-neutral-dark p-10">This section is for landlords.</p>;
