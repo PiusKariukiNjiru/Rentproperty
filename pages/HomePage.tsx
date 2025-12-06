@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
                   placeholder="e.g. '2 bedroom', 'near park'"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="mt-1 w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-white placeholder-gray-400 bg-neutral-darker"
+                  className="mt-1 w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-neutral-darker placeholder-gray-400 bg-white"
                 />
               </div>
               <div>
@@ -81,7 +81,7 @@ const HomePage: React.FC = () => {
                   placeholder="Address, City, Neighborhood, Zip"
                   value={locationSearch}
                   onChange={(e) => setLocationSearch(e.target.value)}
-                  className="mt-1 w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-white placeholder-gray-400 bg-neutral-darker"
+                  className="mt-1 w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-neutral-darker placeholder-gray-400 bg-white"
                 />
               </div>
               <div>
@@ -90,11 +90,11 @@ const HomePage: React.FC = () => {
                   id="property-type-search"
                   value={propertyType}
                   onChange={(e) => setPropertyType(e.target.value as PropertyTypeEnum | '')}
-                  className="mt-1 w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md h-[46px] text-white bg-neutral-darker"
+                  className="mt-1 w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md h-[46px] text-neutral-darker bg-white"
                 >
-                  <option value="" className="text-black">Any Type</option>
+                  <option value="">Any Type</option>
                   {PROPERTY_TYPES_OPTIONS.map(option => (
-                    <option key={option.value} value={option.value} className="text-black">{option.label}</option>
+                    <option key={option.value} value={option.value}>{option.label}</option>
                   ))}
                 </select>
               </div>
@@ -106,7 +106,7 @@ const HomePage: React.FC = () => {
                   placeholder="e.g. 500"
                   value={priceRange[0] ?? ''}
                   onChange={(e) => setPriceRange([e.target.value ? parseInt(e.target.value) : null, priceRange[1]])}
-                  className="mt-1 w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-white placeholder-gray-400 bg-neutral-darker"
+                  className="mt-1 w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-neutral-darker placeholder-gray-400 bg-white"
                 />
               </div>
               <div>
@@ -117,7 +117,7 @@ const HomePage: React.FC = () => {
                   placeholder="e.g. 2000"
                   value={priceRange[1] ?? ''}
                   onChange={(e) => setPriceRange([priceRange[0], e.target.value ? parseInt(e.target.value) : null])}
-                  className="mt-1 w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-white placeholder-gray-400 bg-neutral-darker"
+                  className="mt-1 w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-neutral-darker placeholder-gray-400 bg-white"
                 />
               </div>
               <button
@@ -153,11 +153,11 @@ const HomePage: React.FC = () => {
                       id="bedrooms-home"
                       value={bedrooms}
                       onChange={(e) => setBedrooms(e.target.value)}
-                      className="w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary text-white bg-neutral-darker"
+                      className="w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary text-neutral-darker bg-white"
                     >
-                      <option value="" className="text-black">Any</option>
+                      <option value="">Any</option>
                       {[1, 2, 3, 4, 5, 6].map(num => (
-                        <option key={num} value={num} className="text-black">{num}+</option>
+                        <option key={num} value={num}>{num}+</option>
                       ))}
                     </select>
                   </div>
@@ -169,11 +169,11 @@ const HomePage: React.FC = () => {
                       id="bathrooms-home"
                       value={bathrooms}
                       onChange={(e) => setBathrooms(e.target.value)}
-                      className="w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary text-white bg-neutral-darker"
+                      className="w-full px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary text-neutral-darker bg-white"
                     >
-                      <option value="" className="text-black">Any</option>
+                      <option value="">Any</option>
                       {[1, 2, 3, 4, 5].map(num => (
-                        <option key={num} value={num} className="text-black">{num}+</option>
+                        <option key={num} value={num}>{num}+</option>
                       ))}
                     </select>
                   </div>
@@ -188,7 +188,7 @@ const HomePage: React.FC = () => {
                         placeholder="e.g. 5"
                         value={radiusSearch}
                         onChange={(e) => setRadiusSearch(e.target.value)}
-                        className="flex-1 px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"
+                        className="flex-1 px-4 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"
                       />
                       <button
                         onClick={() => {

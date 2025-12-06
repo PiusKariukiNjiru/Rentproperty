@@ -119,7 +119,7 @@ const ReviewList: React.FC<ReviewListProps> = ({
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
-              className="px-3 py-2 border border-neutral rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-white bg-neutral-darker"
+              className="px-3 py-2 border border-neutral rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-neutral-darker bg-white"
             >
               <option value="newest">Newest First</option>
               <option value="oldest">Oldest First</option>
@@ -132,7 +132,7 @@ const ReviewList: React.FC<ReviewListProps> = ({
             <select
               value={ratingFilter === null ? 'all' : ratingFilter}
               onChange={(e) => setRatingFilter(e.target.value === 'all' ? null : parseInt(e.target.value))}
-              className="px-3 py-2 border border-neutral rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-white bg-neutral-darker"
+              className="px-3 py-2 border border-neutral rounded-md focus:outline-none focus:ring-2 focus:ring-primary text-neutral-darker bg-white"
             >
               <option value="all">All Ratings</option>
               <option value="5">5 Stars</option>

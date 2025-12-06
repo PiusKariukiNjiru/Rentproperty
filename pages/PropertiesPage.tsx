@@ -405,7 +405,7 @@ const PropertiesPage: React.FC = () => {
                 placeholder="e.g. 'cozy', 'renovated'" 
                 value={searchTerm} 
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-white placeholder-gray-400 bg-neutral-darker"
+                className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-neutral-darker placeholder-gray-400 bg-white"
             />
           </div>
           <div className="lg:col-span-2">
@@ -416,7 +416,7 @@ const PropertiesPage: React.FC = () => {
                 placeholder="Address, City, Neighborhood, or Zip Code" 
                 value={locationSearch} 
                 onChange={(e) => setLocationSearch(e.target.value)}
-                className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-white placeholder-gray-400 bg-neutral-darker"
+                className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-neutral-darker placeholder-gray-400 bg-white"
             />
           </div>
           <div>
@@ -427,7 +427,7 @@ const PropertiesPage: React.FC = () => {
                 placeholder="$500" 
                 value={minPrice} 
                 onChange={(e) => setMinPrice(e.target.value)}
-                className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-white placeholder-gray-400 bg-neutral-darker"
+                className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-neutral-darker placeholder-gray-400 bg-white"
             />
           </div>
           <div>
@@ -438,7 +438,7 @@ const PropertiesPage: React.FC = () => {
                 placeholder="$2000" 
                 value={maxPrice} 
                 onChange={(e) => setMaxPrice(e.target.value)}
-                className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-white placeholder-gray-400 bg-neutral-darker"
+                className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md text-neutral-darker placeholder-gray-400 bg-white"
             />
           </div>
           <div>
@@ -447,7 +447,7 @@ const PropertiesPage: React.FC = () => {
                 id="property-type-page"
                 value={propertyTypeFilter} 
                 onChange={(e) => setPropertyTypeFilter(e.target.value as PropertyTypeEnum | '')}
-                className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md h-[46px] text-white bg-neutral-darker"
+                className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary transition-shadow focus:shadow-md h-[46px] text-neutral-darker bg-white"
             >
               <option value="" className="text-black">All Types</option>
               {PROPERTY_TYPES_OPTIONS.map(option => (
@@ -506,7 +506,7 @@ const PropertiesPage: React.FC = () => {
                   id="bedrooms"
                   value={bedrooms}
                   onChange={(e) => setBedrooms(e.target.value)}
-                  className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary text-white bg-neutral-darker"
+                  className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary text-neutral-darker bg-white"
                 >
                   <option value="" className="text-black">Any</option>
                   {[1, 2, 3, 4, 5, 6].map(num => (
@@ -522,7 +522,7 @@ const PropertiesPage: React.FC = () => {
                   id="bathrooms"
                   value={bathrooms}
                   onChange={(e) => setBathrooms(e.target.value)}
-                  className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary text-white bg-neutral-darker"
+                  className="mt-1 w-full px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary text-neutral-darker bg-white"
                 >
                   <option value="" className="text-black">Any</option>
                   {[1, 2, 3, 4, 5].map(num => (
@@ -541,7 +541,7 @@ const PropertiesPage: React.FC = () => {
                     placeholder="e.g. 5"
                     value={radiusSearch}
                     onChange={(e) => setRadiusSearch(e.target.value)}
-                    className="mt-1 flex-1 px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"
+                    className="mt-1 flex-1 px-3 py-2.5 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"
                   />
                   <button
                     onClick={() => {
@@ -668,7 +668,7 @@ const PropertiesPage: React.FC = () => {
                 value={saveSearchName}
                 onChange={(e) => setSaveSearchName(e.target.value)}
                 placeholder="e.g., Downtown 2BR Apartments"
-                className="w-full px-3 py-2 border border-neutral rounded-md focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"
+                className="w-full px-3 py-2 border border-neutral rounded-md focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"
               />
             </div>
             <div className="flex items-center">
@@ -986,7 +986,7 @@ const PropertiesPage: React.FC = () => {
                 onDelete={async (reviewId) => {
                   try {
                     await deleteReview(reviewId);
-                    setPropertyReviews(getReviewsByProperty(selectedProperty.id));
+                    // Reviews will automatically update via useMemo when context changes
                   } catch (error) {
                     // Error handled in context
                   }
@@ -1070,7 +1070,7 @@ const PropertiesPage: React.FC = () => {
               placeholder="Type your response here..."
               rows={4}
               id="review-response"
-              className="w-full p-3 border border-neutral rounded-md focus:ring-primary focus:border-primary shadow-sm transition-shadow focus:shadow-md text-white placeholder-gray-400 bg-neutral-darker"
+              className="w-full p-3 border border-neutral rounded-md focus:ring-primary focus:border-primary shadow-sm transition-shadow focus:shadow-md text-neutral-darker placeholder-gray-400 bg-white"
             />
             <div className="mt-4 flex justify-end space-x-3">
               <button
@@ -1121,7 +1121,7 @@ const PropertiesPage: React.FC = () => {
                 onChange={(e) => setContactMessage(e.target.value)}
                 placeholder="Type your message here..."
                 rows={6}
-                className="w-full p-3 border border-neutral rounded-md focus:ring-primary focus:border-primary shadow-sm transition-shadow focus:shadow-md text-white placeholder-gray-400 bg-neutral-darker"
+                className="w-full p-3 border border-neutral rounded-md focus:ring-primary focus:border-primary shadow-sm transition-shadow focus:shadow-md text-neutral-darker placeholder-gray-400 bg-white"
                 aria-label="Message to Landlord"
             />
             <button 
@@ -1140,7 +1140,7 @@ const PropertiesPage: React.FC = () => {
                 onChange={(e) => setApplicationMessage(e.target.value)}
                 placeholder="Optional message to landlord (e.g., brief introduction, availability)..."
                 rows={4}
-                className="w-full p-3 border border-neutral rounded-md focus:ring-primary focus:border-primary shadow-sm transition-shadow focus:shadow-md text-white placeholder-gray-400 bg-neutral-darker"
+                className="w-full p-3 border border-neutral rounded-md focus:ring-primary focus:border-primary shadow-sm transition-shadow focus:shadow-md text-neutral-darker placeholder-gray-400 bg-white"
                 aria-label="Optional message for application"
             />
             <div className="mt-4 flex justify-end space-x-3">

@@ -600,7 +600,7 @@ const AuthPage: React.FC = () => {
                   aria-required="true"
                   aria-invalid={touched.name && errors.name ? 'true' : 'false'}
                   aria-describedby={touched.name && errors.name ? 'name-error' : undefined}
-                  className={`mt-1 block w-full px-4 py-2.5 border rounded-md shadow-sm focus:outline-none focus:ring-2 sm:text-sm transition-shadow text-white placeholder-gray-400 bg-neutral-darker ${
+                  className={`mt-1 block w-full px-4 py-2.5 border rounded-md shadow-sm focus:outline-none focus:ring-2 sm:text-sm transition-shadow text-neutral-darker placeholder-gray-400 bg-white ${
                     touched.name && errors.name
                       ? 'border-danger focus:ring-danger focus:border-danger'
                       : touched.name && !errors.name && name
@@ -643,7 +643,7 @@ const AuthPage: React.FC = () => {
                 aria-required="true"
                 aria-invalid={touched.email && errors.email ? 'true' : 'false'}
                 aria-describedby={touched.email && errors.email ? 'email-error' : undefined}
-                className={`mt-1 block w-full px-4 py-2.5 border rounded-md shadow-sm focus:outline-none focus:ring-2 sm:text-sm transition-shadow text-white placeholder-gray-400 bg-neutral-darker ${
+                className={`mt-1 block w-full px-4 py-2.5 border rounded-md shadow-sm focus:outline-none focus:ring-2 sm:text-sm transition-shadow text-neutral-darker placeholder-gray-400 bg-white ${
                   touched.email && errors.email
                     ? 'border-danger focus:ring-danger focus:border-danger'
                     : touched.email && !errors.email && email
@@ -684,7 +684,7 @@ const AuthPage: React.FC = () => {
                   aria-required="true"
                   aria-invalid={touched.phone && errors.phone ? 'true' : 'false'}
                   aria-describedby={touched.phone && errors.phone ? 'phone-error' : undefined}
-                  className={`mt-1 block w-full px-4 py-2.5 border rounded-md shadow-sm focus:outline-none focus:ring-2 sm:text-sm transition-shadow text-white placeholder-gray-400 bg-neutral-darker ${
+                  className={`mt-1 block w-full px-4 py-2.5 border rounded-md shadow-sm focus:outline-none focus:ring-2 sm:text-sm transition-shadow text-neutral-darker placeholder-gray-400 bg-white ${
                     touched.phone && errors.phone
                       ? 'border-danger focus:ring-danger focus:border-danger'
                       : touched.phone && !errors.phone && phone
@@ -731,7 +731,7 @@ const AuthPage: React.FC = () => {
                 aria-required="true"
                 aria-invalid={touched.password && errors.password ? 'true' : 'false'}
                 aria-describedby={touched.password && errors.password ? 'password-error' : undefined}
-                className={`mt-1 block w-full px-4 py-2.5 pr-12 border rounded-md shadow-sm focus:outline-none focus:ring-2 sm:text-sm transition-shadow text-white placeholder-gray-400 bg-neutral-darker ${
+                className={`mt-1 block w-full px-4 py-2.5 pr-12 border rounded-md shadow-sm focus:outline-none focus:ring-2 sm:text-sm transition-shadow text-neutral-darker placeholder-gray-400 bg-white ${
                   touched.password && errors.password
                     ? 'border-danger focus:ring-danger focus:border-danger'
                     : touched.password && !errors.password && password

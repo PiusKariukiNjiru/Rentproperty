@@ -96,64 +96,64 @@ const PropertyForm: React.FC<{
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label htmlFor="title" className="block text-sm font-medium text-neutral-dark">Title <span className="text-danger">*</span></label>
-        <input type="text" name="title" id="title" value={formData.title} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+        <input type="text" name="title" id="title" value={formData.title} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
       </div>
       <div>
         <label htmlFor="description" className="block text-sm font-medium text-neutral-dark">Description <span className="text-danger">*</span></label>
-        <textarea name="description" id="description" value={formData.description} onChange={handleChange} rows={4} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+        <textarea name="description" id="description" value={formData.description} onChange={handleChange} rows={4} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
       </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-6">
         <div>
             <label htmlFor="price" className="block text-sm font-medium text-neutral-dark">Price (per month) <span className="text-danger">*</span></label>
-            <input type="number" name="price" id="price" value={formData.price} onChange={handleChange} required min="0" className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+            <input type="number" name="price" id="price" value={formData.price} onChange={handleChange} required min="0" className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
         </div>
         <div>
             <label htmlFor="propertyType" className="block text-sm font-medium text-neutral-dark">Property Type <span className="text-danger">*</span></label>
-            <select name="propertyType" id="propertyType" value={formData.propertyType} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary h-[42px] text-white bg-neutral-darker">
+            <select name="propertyType" id="propertyType" value={formData.propertyType} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary h-[42px] text-neutral-darker bg-white">
             {PROPERTY_TYPES_OPTIONS.map(opt => <option key={opt.value} value={opt.value} className="text-black">{opt.label}</option>)}
             </select>
         </div>
       
         <div>
             <label htmlFor="address" className="block text-sm font-medium text-neutral-dark">Street Address <span className="text-danger">*</span></label>
-            <input type="text" name="address" id="address" value={formData.address} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+            <input type="text" name="address" id="address" value={formData.address} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
         </div>
         <div>
             <label htmlFor="city" className="block text-sm font-medium text-neutral-dark">City <span className="text-danger">*</span></label>
-            <input type="text" name="city" id="city" value={formData.city} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+            <input type="text" name="city" id="city" value={formData.city} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
         </div>
         <div>
             <label htmlFor="zipCode" className="block text-sm font-medium text-neutral-dark">Zip Code <span className="text-danger">*</span></label>
-            <input type="text" name="zipCode" id="zipCode" value={formData.zipCode} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+            <input type="text" name="zipCode" id="zipCode" value={formData.zipCode} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
         </div>
         <div>
             <label htmlFor="availabilityDate" className="block text-sm font-medium text-neutral-dark">Availability Date <span className="text-danger">*</span></label>
-            <input type="date" name="availabilityDate" id="availabilityDate" value={formData.availabilityDate} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+            <input type="date" name="availabilityDate" id="availabilityDate" value={formData.availabilityDate} onChange={handleChange} required className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
         </div>
         <div>
             <label htmlFor="latitude" className="block text-sm font-medium text-neutral-dark">Latitude (Optional)</label>
-            <input type="number" step="any" name="latitude" id="latitude" value={formData.latitude ?? ''} onChange={handleChange} placeholder="e.g. 34.0522" className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+            <input type="number" step="any" name="latitude" id="latitude" value={formData.latitude ?? ''} onChange={handleChange} placeholder="e.g. 34.0522" className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
         </div>
         <div>
             <label htmlFor="longitude" className="block text-sm font-medium text-neutral-dark">Longitude (Optional)</label>
-            <input type="number" step="any" name="longitude" id="longitude" value={formData.longitude ?? ''} onChange={handleChange} placeholder="e.g. -118.2437" className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+            <input type="number" step="any" name="longitude" id="longitude" value={formData.longitude ?? ''} onChange={handleChange} placeholder="e.g. -118.2437" className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
         </div>
         <div>
             <label htmlFor="bedrooms" className="block text-sm font-medium text-neutral-dark">Bedrooms</label>
-            <input type="number" name="bedrooms" id="bedrooms" value={formData.bedrooms ?? ''} onChange={handleChange} min="0" placeholder="e.g. 2" className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+            <input type="number" name="bedrooms" id="bedrooms" value={formData.bedrooms ?? ''} onChange={handleChange} min="0" placeholder="e.g. 2" className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
         </div>
         <div>
             <label htmlFor="bathrooms" className="block text-sm font-medium text-neutral-dark">Bathrooms</label>
-            <input type="number" name="bathrooms" id="bathrooms" value={formData.bathrooms ?? ''} onChange={handleChange} min="0" step="0.5" placeholder="e.g. 1.5" className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+            <input type="number" name="bathrooms" id="bathrooms" value={formData.bathrooms ?? ''} onChange={handleChange} min="0" step="0.5" placeholder="e.g. 1.5" className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
         </div>
         <div>
             <label htmlFor="squareFootage" className="block text-sm font-medium text-neutral-dark">Square Footage</label>
-            <input type="number" name="squareFootage" id="squareFootage" value={formData.squareFootage ?? ''} onChange={handleChange} min="0" placeholder="e.g. 1200" className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+            <input type="number" name="squareFootage" id="squareFootage" value={formData.squareFootage ?? ''} onChange={handleChange} min="0" placeholder="e.g. 1200" className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
         </div>
         <div>
             <label htmlFor="petPolicy" className="block text-sm font-medium text-neutral-dark">Pet Policy</label>
-            <select name="petPolicy" id="petPolicy" value={formData.petPolicy} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary h-[42px] text-white bg-neutral-darker">
+            <select name="petPolicy" id="petPolicy" value={formData.petPolicy} onChange={handleChange} className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary h-[42px] text-neutral-darker bg-white">
               <option value="no-pets" className="text-black">No Pets</option>
               <option value="cats-only" className="text-black">Cats Only</option>
               <option value="dogs-only" className="text-black">Dogs Only</option>
@@ -208,7 +208,7 @@ const PropertyForm: React.FC<{
       
       <div className="md:col-span-2">
         <label htmlFor="tenantRequirements" className="block text-sm font-medium text-neutral-dark">Tenant Requirements</label>
-        <textarea name="tenantRequirements" id="tenantRequirements" value={formData.tenantRequirements} onChange={handleChange} rows={3} className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+        <textarea name="tenantRequirements" id="tenantRequirements" value={formData.tenantRequirements} onChange={handleChange} rows={3} className="mt-1 block w-full px-3 py-2 border border-neutral rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
       </div>
       
       <div className="md:col-span-2">
@@ -552,25 +552,25 @@ const DashboardPage: React.FC = () => {
               <form onSubmit={handleProfileSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-neutral-dark">Full Name</label>
-                  <input type="text" name="name" id="name" value={profileData.name || ''} onChange={handleProfileChange} className="mt-1 block w-full border-neutral rounded-md shadow-sm p-3 focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+                  <input type="text" name="name" id="name" value={profileData.name || ''} onChange={handleProfileChange} className="mt-1 block w-full border-neutral rounded-md shadow-sm p-3 focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-neutral-dark">Email Address</label>
-                  <input type="email" name="email" id="email" value={profileData.email || ''} onChange={handleProfileChange} className="mt-1 block w-full border-neutral rounded-md shadow-sm p-3 focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+                  <input type="email" name="email" id="email" value={profileData.email || ''} onChange={handleProfileChange} className="mt-1 block w-full border-neutral rounded-md shadow-sm p-3 focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
                 </div>
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-neutral-dark">Phone Number</label>
-                  <input type="tel" name="phone" id="phone" value={profileData.phone || ''} onChange={handleProfileChange} className="mt-1 block w-full border-neutral rounded-md shadow-sm p-3 focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+                  <input type="tel" name="phone" id="phone" value={profileData.phone || ''} onChange={handleProfileChange} className="mt-1 block w-full border-neutral rounded-md shadow-sm p-3 focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
                 </div>
                 {currentUser.userType === UserType.Tenant && (
                     <div>
                         <label htmlFor="employmentDetails" className="block text-sm font-medium text-neutral-dark">Employment Details</label>
-                        <textarea name="employmentDetails" id="employmentDetails" value={profileData.employmentDetails || ''} onChange={handleProfileChange} rows={3} className="mt-1 block w-full border-neutral rounded-md shadow-sm p-3 focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+                        <textarea name="employmentDetails" id="employmentDetails" value={profileData.employmentDetails || ''} onChange={handleProfileChange} rows={3} className="mt-1 block w-full border-neutral rounded-md shadow-sm p-3 focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
                     </div>
                 )}
                 <div>
                   <label htmlFor="profilePicture" className="block text-sm font-medium text-neutral-dark">Profile Picture URL</label>
-                  <input type="url" name="profilePicture" id="profilePicture" value={profileData.profilePicture || ''} onChange={handleProfileChange} placeholder="https://example.com/image.jpg" className="mt-1 block w-full border-neutral rounded-md shadow-sm p-3 focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"/>
+                  <input type="url" name="profilePicture" id="profilePicture" value={profileData.profilePicture || ''} onChange={handleProfileChange} placeholder="https://example.com/image.jpg" className="mt-1 block w-full border-neutral rounded-md shadow-sm p-3 focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"/>
                 </div>
                 <div className="flex space-x-3 pt-2">
                     <button type="submit" className="bg-primary text-white px-6 py-2.5 rounded-md hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center justify-center min-w-[120px] font-medium" disabled={isLoading}>
@@ -822,7 +822,7 @@ const DashboardPage: React.FC = () => {
                                             <select
                                                 value={app.status}
                                                 onChange={(e) => handleApplicationStatusChange(app.id, e.target.value as ApplicationStatus)}
-                                                className="mt-1 text-sm p-2 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary min-w-[160px] h-[40px] text-white bg-neutral-darker"
+                                                className="mt-1 text-sm p-2 border border-neutral rounded-md shadow-sm focus:ring-primary focus:border-primary min-w-[160px] h-[40px] text-neutral-darker bg-white"
                                                 disabled={isLoading}
                                                 aria-label={`Update status for application from ${tenant?.name}`}
                                             >
@@ -1040,7 +1040,7 @@ const DashboardPage: React.FC = () => {
               placeholder="Type your response here..."
               rows={4}
               id="review-response-dashboard"
-              className="w-full p-3 border border-neutral rounded-md focus:ring-primary focus:border-primary shadow-sm transition-shadow focus:shadow-md text-white placeholder-gray-400 bg-neutral-darker"
+              className="w-full p-3 border border-neutral rounded-md focus:ring-primary focus:border-primary shadow-sm transition-shadow focus:shadow-md text-neutral-darker placeholder-gray-400 bg-white"
             />
             <div className="mt-4 flex justify-end space-x-3">
               <button

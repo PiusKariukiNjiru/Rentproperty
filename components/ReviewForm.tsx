@@ -124,7 +124,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           maxLength={100}
-          className="w-full px-4 py-2 border border-neutral rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker"
+          className="w-full px-4 py-2 border border-neutral rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white"
           placeholder="e.g., Great landlord, responsive and helpful"
         />
       </div>
@@ -141,7 +141,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({
           rows={5}
           maxLength={1000}
           required
-          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-white placeholder-gray-400 bg-neutral-darker ${
+          className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary text-neutral-darker placeholder-gray-400 bg-white ${
             errors.content ? 'border-danger' : 'border-neutral'
           }`}
           placeholder="Share your experience... (minimum 10 characters)"

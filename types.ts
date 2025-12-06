@@ -191,7 +191,7 @@ export interface AppContextType {
   getUserById: (userId: string) => User | undefined; // This might change
   isLoading: boolean;
   setLoading: (loading: boolean) => void;
-  fetchProperties: () => Promise<void>; // Renamed from getPropertyById to reflect fetching all
+  fetchProperties: (queryParams?: Record<string, string>) => Promise<void>;
   getPropertyById: (propertyId: string) => Property | undefined; // To get from current state
   submitApplication: (applicationData: Omit<PropertyApplication, 'id' | 'applicationDate' | 'status' | 'landlordId' | 'createdAt' | 'updatedAt'>) => Promise<void>;
   updateApplicationStatus: (applicationId: string, status: ApplicationStatus) => Promise<void>;
