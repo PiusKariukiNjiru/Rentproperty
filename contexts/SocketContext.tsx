@@ -53,10 +53,14 @@ export const SocketProvider: React.FC<SocketProviderProps> = ({ children }) => {
 
     const newSocket = io(SOCKET_URL, {
       auth: { token },
-      transports: ['websocket', 'polling'],
+      transports: ['websocket'], // Prefer websocket over polling for better performance
+      upgrade: true,
+      rememberUpgrade: true,
       reconnection: true,
-      reconnectionAttempts: 5,
       reconnectionDelay: 1000,
+      reconnectionDelayMax: 5000,
+      maxReconnectionAttempts: 5,
+      timeout: 20000,
     });
 
     newSocket.on('connect', () => {

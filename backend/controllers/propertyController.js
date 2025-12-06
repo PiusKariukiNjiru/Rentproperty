@@ -150,7 +150,12 @@ exports.getProperties = async (req, res) => {
       queryFilter.latitude = { $exists: true, $ne: null };
       queryFilter.longitude = { $exists: true, $ne: null };
       
-      properties = await Property.find(queryFilter).populate('landlordId', 'name email phone profilePicture');
+      // Optimize query with select() and lean() for better performance
+      properties = await Property.find(queryFilter)
+        .select('title price address city photos propertyType bedrooms bathrooms amenities squareFootage petPolicy leaseTerms latitude longitude availabilityDate description tenantRequirements landlordId createdAt updatedAt')
+        .populate('landlordId', 'name email phone profilePicture')
+        .lean()
+        .limit(100); // Limit results for performance
       
       // Filter by distance (MongoDB $geoNear would be better but requires geospatial index)
       // For now, we'll filter in JavaScript
@@ -160,7 +165,12 @@ exports.getProperties = async (req, res) => {
         return distance <= radiusInMiles;
       });
     } else {
-      properties = await Property.find(queryFilter).populate('landlordId', 'name email phone profilePicture');
+      // Optimize query with select() and lean() for better performance
+      properties = await Property.find(queryFilter)
+        .select('title price address city photos propertyType bedrooms bathrooms amenities squareFootage petPolicy leaseTerms latitude longitude availabilityDate description tenantRequirements landlordId createdAt updatedAt')
+        .populate('landlordId', 'name email phone profilePicture')
+        .lean()
+        .limit(100); // Limit results for performance
     }
     
     // Transform _id to id for frontend consistency

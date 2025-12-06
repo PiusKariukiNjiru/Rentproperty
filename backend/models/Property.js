@@ -80,4 +80,13 @@ const PropertySchema = new mongoose.Schema({
   }],
 }, { timestamps: true });
 
+// Add indexes for better query performance
+PropertySchema.index({ landlordId: 1, createdAt: -1 });
+PropertySchema.index({ city: 1, price: 1 });
+PropertySchema.index({ propertyType: 1 });
+PropertySchema.index({ bedrooms: 1, bathrooms: 1 });
+PropertySchema.index({ amenities: 1 });
+PropertySchema.index({ latitude: 1, longitude: 1 }); // For geospatial queries
+PropertySchema.index({ price: 1, city: 1, propertyType: 1 }); // Compound index for common queries
+
 module.exports = mongoose.model('Property', PropertySchema);

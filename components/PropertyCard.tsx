@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import { Property, UserType, AppContextType } from '../types';
 import { MapPinIcon, CurrencyDollarIcon, CalendarDaysIcon, HeartIcon, BuildingOfficeIcon } from './icons';
 import { AppContext } from '../contexts/AppContext';
+import { LazyImage } from './LazyImage';
 
 interface PropertyCardProps {
   property: Property;
   onViewDetails: (property: Property) => void;
 }
 
-const PropertyCard: React.FC<PropertyCardProps> = ({ property, onViewDetails }) => {
+const PropertyCard: React.FC<PropertyCardProps> = memo(({ property, onViewDetails }) => {
   const { currentUser, toggleFavorite, isLoading } = useContext(AppContext) as AppContextType;
 
   const isFavorite = currentUser?.userType === UserType.Tenant && currentUser.favoriteProperties.includes(property.id);
@@ -38,10 +39,10 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onViewDetails }) 
       aria-labelledby={`property-title-${property.id}`}
     >
       <div className="relative">
-        <img 
+        <LazyImage 
           src={displayImage}
           alt={`View of ${property.title}`} 
-          className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300 bg-neutral" // Added bg-neutral for placeholder state
+          className="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300 bg-neutral"
         />
         {currentUser?.userType === UserType.Tenant && (
           <button 
@@ -100,6 +101,16 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property, onViewDetails }) 
       </div>
     </div>
   );
-};
+}, (prevProps, nextProps) => {
+  // Custom comparison function for memo
+  return (
+    prevProps.property.id === nextProps.property.id &&
+    prevProps.property.photos?.[0] === nextProps.property.photos?.[0] &&
+    prevProps.property.price === nextProps.property.price &&
+    prevProps.property.title === nextProps.property.title
+  );
+});
+
+PropertyCard.displayName = 'PropertyCard';
 
 export default PropertyCard;

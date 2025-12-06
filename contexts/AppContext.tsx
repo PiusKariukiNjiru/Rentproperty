@@ -11,6 +11,10 @@ interface AppProviderProps {
   children: ReactNode;
 }
 
+// Simple cache for properties
+const propertyCache = new Map<string, { data: Property[]; timestamp: number }>();
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+
 export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const { addToast } = useToast();
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -82,6 +86,15 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   }, [addToast]);
 
   const fetchProperties = useCallback(async (queryParams: Record<string, string> = {}) => {
+    // Check cache first
+    const cacheKey = JSON.stringify(queryParams);
+    const cached = propertyCache.get(cacheKey);
+    
+    if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
+      setProperties(cached.data);
+      return;
+    }
+    
     setIsLoading(true);
     try {
         const queryString = new URLSearchParams(queryParams).toString();
@@ -89,6 +102,9 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         if (!response.ok) throw new Error('Failed to fetch properties');
         const data: Property[] = await response.json();
         setProperties(data);
+        
+        // Update cache
+        propertyCache.set(cacheKey, { data, timestamp: Date.now() });
     } catch (error: any) {
         addToast(error.message || 'Could not load properties.', 'error');
         console.error("Fetch properties error:", error);

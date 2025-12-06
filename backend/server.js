@@ -4,6 +4,7 @@ const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
 const cors = require('cors');
+const compression = require('compression');
 const path = require('path');
 const connectDB = require('./config/db');
 const jwt = require('jsonwebtoken');
@@ -20,6 +21,9 @@ const server = http.createServer(app);
 
 // Connect to Database
 connectDB();
+
+// Compression middleware - should be early in the middleware stack
+app.use(compression());
 
 // CORS configuration
 const allowedOrigins = [
