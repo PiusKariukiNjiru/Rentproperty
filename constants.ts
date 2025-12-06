@@ -2,17 +2,11 @@ import { PropertyTypeEnum, ApplicationStatus } from './types';
 
 export const APP_NAME = "LocalRent";
 
-// Production API URL - Render backend
-const PRODUCTION_API_URL = 'https://rentproperty-backend.onrender.com/api';
+// API URL - Always use production Render backend
+// Change to 'http://localhost:5001/api' for local development
+export const API_BASE_URL = 'https://rentproperty-backend.onrender.com/api';
 
-// Use localhost only in development, otherwise use production
-export const API_BASE_URL = import.meta.env.DEV 
-  ? 'http://localhost:5001/api' 
-  : PRODUCTION_API_URL;
-
-export const FRONTEND_URL = import.meta.env.DEV 
-  ? 'http://localhost:5174' 
-  : 'https://rentproperties.vercel.app';
+export const FRONTEND_URL = 'https://rentproperties.vercel.app';
 
 export const PROPERTY_TYPES_OPTIONS = [
   { value: PropertyTypeEnum.Apartment, label: 'Apartment' },
