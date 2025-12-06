@@ -22,6 +22,7 @@ const allowedOrigins = [
     'http://localhost:5173',
     process.env.CLIENT_URL,
     'https://rentproperties.vercel.app',
+    'https://rentproperty.vercel.app', // Alternative domain
     'https://rentproperties-git-main-piuskariukinjirus-projects.vercel.app',
     'https://rentproperties-ate25uqg1-piuskariukinjirus-projects.vercel.app',
 ].filter(Boolean);
