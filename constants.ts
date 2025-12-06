@@ -1,8 +1,9 @@
 import { PropertyTypeEnum, ApplicationStatus } from './types';
 
 export const APP_NAME = "LocalRent";
-export const API_BASE_URL = 'http://localhost:5001/api'; // Backend API URL
-export const FRONTEND_URL = 'http://localhost:5174'; // Frontend URL
+// Use environment variable for API URL, fallback to localhost for development
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api';
+export const FRONTEND_URL = import.meta.env.VITE_FRONTEND_URL || 'http://localhost:5174';
 
 export const PROPERTY_TYPES_OPTIONS = [
   { value: PropertyTypeEnum.Apartment, label: 'Apartment' },

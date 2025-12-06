@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AppContext } from '../contexts/AppContext';
 import { AppContextType, Property, PropertyTypeEnum, UserType, User, Review, ReviewStats } from '../types';
+import { API_BASE_URL } from '../constants';
 import PropertyCard from '../components/PropertyCard';
 import Modal from '../components/Modal';
 import LoadingSpinner, { FullPageLoader } from '../components/LoadingSpinner';
@@ -86,7 +87,7 @@ const PropertiesPage: React.FC = () => {
   // Fetch saved searches on mount
   useEffect(() => {
     if (currentUser) {
-      fetch('http://localhost:5001/api/saved-searches', {
+      fetch(`${API_BASE_URL}/saved-searches`, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('localRentAuthToken')}` }
       })
         .then(res => res.json())
@@ -98,7 +99,7 @@ const PropertiesPage: React.FC = () => {
   // Fetch saved searches on mount
   useEffect(() => {
     if (currentUser) {
-      fetch('http://localhost:5001/api/saved-searches', {
+      fetch(`${API_BASE_URL}/saved-searches`, {
         headers: { 'Authorization': `Bearer ${localStorage.getItem('localRentAuthToken')}` }
       })
         .then(res => res.json())
@@ -710,7 +711,7 @@ const PropertiesPage: React.FC = () => {
                       lng: radiusCenter?.lng.toString() || undefined,
                     };
                     
-                    const response = await fetch('http://localhost:5001/api/saved-searches', {
+                    const response = await fetch(`${API_BASE_URL}/saved-searches`, {
                       method: 'POST',
                       headers: {
                         'Content-Type': 'application/json',
@@ -728,7 +729,7 @@ const PropertiesPage: React.FC = () => {
                       setShowSaveSearchModal(false);
                       setSaveSearchName('');
                       // Refresh saved searches
-                      const searchesResponse = await fetch('http://localhost:5001/api/saved-searches', {
+                      const searchesResponse = await fetch(`${API_BASE_URL}/saved-searches`, {
                         headers: { 'Authorization': `Bearer ${localStorage.getItem('localRentAuthToken')}` }
                       });
                       if (searchesResponse.ok) {

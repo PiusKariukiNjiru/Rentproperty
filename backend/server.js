@@ -17,8 +17,40 @@ const app = express();
 connectDB();
 
 // Middleware
+const allowedOrigins = [
+    'http://localhost:5174',
+    'http://localhost:5173',
+    process.env.CLIENT_URL,
+    'https://rentproperties.vercel.app',
+    'https://rentproperties-git-main-piuskariukinjirus-projects.vercel.app',
+    'https://rentproperties-ate25uqg1-piuskariukinjirus-projects.vercel.app',
+].filter(Boolean);
+
+// Vercel preview deployment pattern
+const vercelPreviewPattern = /^https:\/\/rentproperties-.*-piuskariukinjirus-projects\.vercel\.app$/;
+
 app.use(cors({
-    origin: ['http://localhost:5174', 'http://localhost:5173', process.env.CLIENT_URL].filter(Boolean), // Allow requests from your frontend
+    origin: function (origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        
+        // Check if origin is in allowed list
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        
+        // Check if origin matches Vercel preview pattern
+        if (vercelPreviewPattern.test(origin)) {
+            return callback(null, true);
+        }
+        
+        // Allow if CLIENT_URL is set and matches
+        if (process.env.CLIENT_URL && origin === process.env.CLIENT_URL) {
+            return callback(null, true);
+        }
+        
+        callback(new Error('Not allowed by CORS'));
+    },
     credentials: true // If you need to handle cookies or authorization headers
 }));
 app.use(express.json({ limit: '10mb' })); // For parsing application/json, increased limit for base64 images
