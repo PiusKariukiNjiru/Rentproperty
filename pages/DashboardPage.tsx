@@ -341,7 +341,10 @@ const DashboardPage: React.FC = () => {
       setIsPropertyModalOpen(true);
     }
     if (currentUser.userType === UserType.Landlord && actionParam === 'edit' && propertyIdParam && tabParam === 'listings') {
-        const propToEdit = properties.find(p => p.id === propertyIdParam && p.landlordId === currentUser.id);
+        const propToEdit = properties.find(p => {
+          const landlordId = typeof p.landlordId === 'string' ? p.landlordId : (p.landlordId as User)?.id;
+          return p.id === propertyIdParam && landlordId === currentUser.id;
+        });
         if (propToEdit) {
             setEditingProperty(propToEdit);
             setIsPropertyModalOpen(true);
@@ -455,7 +458,11 @@ const DashboardPage: React.FC = () => {
 
   const userProperties = useMemo(() => {
     if (currentUser?.userType === UserType.Landlord) {
-      return properties.filter(p => p.landlordId === currentUser.id).sort((a,b) => a.title.localeCompare(b.title));
+      return properties.filter(p => {
+        // Handle landlordId being either a string or a User object
+        const landlordId = typeof p.landlordId === 'string' ? p.landlordId : (p.landlordId as User)?.id;
+        return landlordId === currentUser.id;
+      }).sort((a,b) => a.title.localeCompare(b.title));
     }
     return [];
   }, [properties, currentUser]);
