@@ -1,0 +1,5 @@
+{
+  "name": "LocalRent",
+  "description": "A web application for finding and listing local rental properties, connecting tenants and landlords.",
+  "requestFramePermissions": []
+}
