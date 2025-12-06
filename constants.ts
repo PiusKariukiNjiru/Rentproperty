@@ -1,24 +1,18 @@
 import { PropertyTypeEnum, ApplicationStatus } from './types';
 
 export const APP_NAME = "LocalRent";
-// Use environment variable for API URL, fallback to localhost for development
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api';
-export const FRONTEND_URL = import.meta.env.VITE_FRONTEND_URL || 'http://localhost:5174';
 
-// Debug: Always log the API URL being used (helps troubleshoot deployment issues)
-console.log('🔧 API Configuration:', {
-  'VITE_API_BASE_URL from env': import.meta.env.VITE_API_BASE_URL || 'NOT SET',
-  'Using API_BASE_URL': API_BASE_URL,
-  'Is Production': import.meta.env.PROD,
-  'Is Development': import.meta.env.DEV,
-  'All env vars starting with VITE_': Object.keys(import.meta.env).filter(key => key.startsWith('VITE_'))
-});
+// Production API URL - Render backend
+const PRODUCTION_API_URL = 'https://rentproperty-backend.onrender.com/api';
 
-if (import.meta.env.PROD && !import.meta.env.VITE_API_BASE_URL) {
-  console.error('❌ ERROR: VITE_API_BASE_URL is not set in production!');
-  console.error('Please set VITE_API_BASE_URL in Vercel environment variables.');
-  console.error('Expected: https://rentproperty-backend.onrender.com/api');
-}
+// Use localhost only in development, otherwise use production
+export const API_BASE_URL = import.meta.env.DEV 
+  ? 'http://localhost:5001/api' 
+  : PRODUCTION_API_URL;
+
+export const FRONTEND_URL = import.meta.env.DEV 
+  ? 'http://localhost:5174' 
+  : 'https://rentproperties.vercel.app';
 
 export const PROPERTY_TYPES_OPTIONS = [
   { value: PropertyTypeEnum.Apartment, label: 'Apartment' },
