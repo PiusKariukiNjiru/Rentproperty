@@ -3,10 +3,13 @@ import { PropertyTypeEnum, ApplicationStatus } from './types';
 export const APP_NAME = "LocalRent";
 
 // API URL - Always use production Render backend
-// Change to 'http://localhost:5001/api' for local development
 export const API_BASE_URL = 'https://rentproperty-backend.onrender.com/api';
 
 export const FRONTEND_URL = 'https://rentproperties.vercel.app';
+
+// BUILD MARKER - If you see this in console, the new code is deployed
+console.log('🚀 BUILD VERSION: 2024-DEC-06-v2');
+console.log('🌐 API_BASE_URL:', API_BASE_URL);
 
 export const PROPERTY_TYPES_OPTIONS = [
   { value: PropertyTypeEnum.Apartment, label: 'Apartment' },
